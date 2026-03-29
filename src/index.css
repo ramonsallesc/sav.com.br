@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   SÀV — Design System
+   Marca de bolsas artesanais de luxo
+   
+   ⚠️ CORES: Altere as variáveis CSS abaixo para mudar o tema global.
+   Todas as cores usam HSL.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Dream Avenue Regular';
+  src: url('../fonts/Dream Avenue Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Brand: #f6f4ee → HSL(43, 24%, 95%) */
+    --background: 43 24% 95%;
+    /* Brand: #452a17 → HSL(22, 52%, 18%) */
+    --foreground: 22 52% 18%;
+
+    --card: 43 20% 93%;
+    --card-foreground: 22 52% 18%;
+
+    --popover: 43 24% 95%;
+    --popover-foreground: 22 52% 18%;
+
+    --primary: 22 52% 18%;
+    --primary-foreground: 43 24% 95%;
+
+    --secondary: 43 16% 89%;
+    --secondary-foreground: 22 52% 18%;
+
+    --muted: 43 12% 85%;
+    --muted-foreground: 22 18% 50%;
+
+    --accent: 43 16% 89%;
+    --accent-foreground: 22 52% 18%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 22 15% 78%;
+    --input: 22 15% 78%;
+    --ring: 22 52% 18%;
+
+    --radius: 9999px;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ============================================================
+   Tipografia utilitária
+   - font-logo: para a marca SÀV (Dream Avenue Regular)
+   - font-body-*: variações de peso do Helvetica Neue
+   ============================================================ */
+@layer utilities {
+  .font-logo {
+    font-family: 'Dream Avenue Regular', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+  }
+
+  .font-body-thin {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+  }
+
+  .font-body-ultralight {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 100;
+  }
+
+  .font-body-light {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+  }
+
+  .font-body-regular {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+}
