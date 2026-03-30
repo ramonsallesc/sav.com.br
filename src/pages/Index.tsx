@@ -39,7 +39,7 @@ const Index = () => {
           />
           <StyleButton
             label="Fashion Essentials"
-            onClick={() => navigate("/style/fashion-essential")}
+            onClick={() => navigate("/style/fashion-essentials")}
           />
         </motion.div>
       </div>

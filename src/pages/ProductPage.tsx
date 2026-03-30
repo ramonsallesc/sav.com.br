@@ -6,7 +6,7 @@ import CustomizationTabs from "@/components/CustomizationTabs";
 import ColorSelector from "@/components/ColorSelector";
 import OptionSelector from "@/components/OptionSelector";
 import PageLayout from "@/components/PageLayout";
-import { getProductById, formatPrice } from "@/data/products";
+import { getProductById, formatPrice, getProductPrice } from "@/data/products";
 import {
   baseTabs,
   getColorOptions,
@@ -44,6 +44,11 @@ const ProductPage = () => {
     return getVariantImage(product.id, selectedColor, product.image, selectedHandle);
   }, [product, selectedColor, selectedHandle]);
 
+  const currentPrice = useMemo(() => {
+    if (!product) return 0;
+    return getProductPrice(product.id, selectedColor, product.price);
+  }, [product, selectedColor]);
+
   // Set product in store on mount
   useEffect(() => {
     if (!product) return;
@@ -69,13 +74,13 @@ const ProductPage = () => {
       setOrder({
         productId: product.id,
         productName: product.name,
-        price: product.price,
+        price: currentPrice,
         style: product.style,
         color: selectedColor,
         handle: product.style === "handcrafted" ? selectedHandle : "",
       });
     }
-  }, [product, selectedColor, selectedHandle, setOrder]);
+  }, [currentPrice, product, selectedColor, selectedHandle, setOrder]);
 
   useEffect(() => {
     setActiveTab("color");
@@ -98,6 +103,10 @@ const ProductPage = () => {
     });
     navigate("/checkout");
   };
+
+  const orderNote = isHandcrafted
+    ? "🛈 Nossas peças são produzidas exclusivamente sob encomenda e não trabalhamos com pronta entrega. Para consultar prazos e mais informações, entre em contato via WhatsApp ao final do seu pedido."
+    : "🛈 Nossas peças são produzidas exclusivamente sob encomenda e não trabalhamos com pronta entrega. As peças da linha Fashion Essentials estão sujeitas à disponibilidade junto ao fornecedor. Para consultar prazos e mais informações, entre em contato via WhatsApp ao final do seu pedido.";
 
   return (
     <PageLayout>
@@ -136,6 +145,15 @@ const ProductPage = () => {
           />
         </AnimatePresence>
       </div>
+
+      <motion.p
+        className="font-body-light mt-1 w-full text-center text-[9px] leading-relaxed text-muted-foreground/80"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.35, delay: 0.1 }}
+      >
+        As cores dos produtos podem apresentar variações em relação às imagens exibidas, devido a fatores como iluminação, tela do dispositivo e processos de produção.
+      </motion.p>
 
       {/* Abas de personalização */}
       <div className="mt-6 w-full">
@@ -182,7 +200,7 @@ const ProductPage = () => {
         transition={{ duration: 0.4, delay: 0.3 }}
       >
         <span className="font-body-regular text-2xl tracking-wide text-foreground">
-          {formatPrice(product.price)}
+          {formatPrice(currentPrice)}
         </span>
         <motion.button
           onClick={handleOrder}
@@ -199,7 +217,7 @@ const ProductPage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.4 }}
       >
-        🛈 Nossas peças são produzidas exclusivamente sob encomenda e não trabalhamos com pronta entrega. Para consultar prazos e mais informações, entre em contato via WhatsApp ao final do seu pedido.
+        {orderNote}
       </motion.p>
     </PageLayout>
   );

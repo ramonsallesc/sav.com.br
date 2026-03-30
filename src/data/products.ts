@@ -12,13 +12,12 @@
  * ============================================================
  */
 
-import bagWestBlack from "@/assets/bag-west-preta.png";
 import bagAllureWine from "@/assets/bag-allure-vinho.png";
 import bagVenusCoffe from "@/assets/bag-venus-cafe.png";
 import bagNuitCaramelo from "@/assets/bag-nuit-caramelo.png";
 import bagLivBlack from "@/assets/bag-liv-preta.png";
 
-export type Style = "handcrafted" | "fashion-essential";
+export type Style = "handcrafted" | "fashion-essentials";
 
 export interface Product {
   id: string;
@@ -30,32 +29,29 @@ export interface Product {
   price: number;
 }
 
+const livColorPrices: Record<string, number> = {
+  preta: 249.9,
+  offwhite: 219.9,
+};
+
 // ⚠️ ALTERE OS PRODUTOS AQUI — ou substitua por fetch do banco de dados
 export const products: Product[] = [
   {
     id: "bag-venus-fe",
     name: "Bag Vênus",
     description: "Entrelaçado de couro sintético.",
-    style: "fashion-essential",
+    style: "fashion-essentials",
     image: bagVenusCoffe,
-    price: 120,
+    price: 229.9,
   },
   {
     id: "bag-allure-fe",
     name: "Bag Allure",
     description: "Estilo baguete com apliques frontais com feicho magnético e zíper, com dois bolsos internos.",
-    style: "fashion-essential",
+    style: "fashion-essentials",
     image: bagAllureWine,
-    price: 120,
+    price: 189.9,
   },
-  {
-    id: "bag-west-fe",
-    name: "Bag West",
-    description: "Modelo east-west em couro sintético com dois bolsos internos",
-    style: "fashion-essential",
-    image: bagWestBlack,
-    price: 100,
-  }, 
   {
     id: "bag-nuit-hc",
     name: "Bag Nuit",
@@ -70,7 +66,7 @@ export const products: Product[] = [
     description: "Técnica de macramê com fio de algodão de 5mm com alça transversal e alça de mão.",
     style: "handcrafted",
     image: bagLivBlack,
-    price: 180,
+    price: 219.9,
   },
 ];
 
@@ -82,6 +78,15 @@ export function getProductById(id: string): Product | undefined {
 /** Filtra produtos por estilo */
 export function getProductsByStyle(style: Style): Product[] {
   return products.filter((p) => p.style === style);
+}
+
+/** Resolve preço final por produto+cor */
+export function getProductPrice(productId: string, colorValue: string, fallbackPrice: number): number {
+  if (productId === "bag-liv-hc") {
+    return livColorPrices[colorValue] ?? fallbackPrice;
+  }
+
+  return fallbackPrice;
 }
 
 /** Formata preço para BRL */

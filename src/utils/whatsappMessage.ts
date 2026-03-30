@@ -9,7 +9,7 @@
  */
 
 // ⚠️ NÚMERO DO WHATSAPP — ALTERE AQUI
-export const WHATSAPP_NUMBER = "5511999999999";
+export const WHATSAPP_NUMBER = "5521965593697";
 
 export interface WhatsAppOrderData {
   style: string;
@@ -27,19 +27,15 @@ export interface WhatsAppOrderData {
  * ⚠️ Modifique o template abaixo para alterar o formato da mensagem.
  */
 export function buildWhatsAppMessage(data: WhatsAppOrderData): string {
-  const handleLine = data.handle ? `Alça: ${data.handle}\n` : "";
+  const handleLine = data.handle ? `Alça: ${data.handle}` : "";
 
-  return `Olá, gostaria de fazer um pedido:
+  return `Olá, meu nome é ${data.customerName} e gostaria de fazer um pedido!
 
 Estilo: ${data.style}
 Modelo: ${data.productName}
 Cor: ${data.color}
 ${handleLine}
 
-Preço: ${data.price}
-
-Nome: ${data.customerName}
-WhatsApp: ${data.customerWhatsApp}
 Observações: ${data.notes || "Nenhuma"}`;
 }
 

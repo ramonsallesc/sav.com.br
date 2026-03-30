@@ -8,7 +8,7 @@ interface OrderSummaryProps {
 
 const labelMap: Record<string, string> = {
   "handcrafted": "Handcrafted",
-  "fashion-essential": "Fashion Essentials",
+  "fashion-essentials": "Fashion Essentials",
 };
 
 const OrderSummary = ({ order }: OrderSummaryProps) => {

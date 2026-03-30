@@ -14,16 +14,13 @@
  * ============================================================
  */
 
-import bagWestBlack from "@/assets/bag-west-preta.png";
-import bagWestRed from "@/assets/bag-west-vermelha.png";
-import bagWestCamel from "@/assets/bag-west-caramelo.png";
 import bagAllureCamel from "@/assets/bag-allure-caramelo.png";
 import bagAllureOffwhite from "@/assets/bag-allure-offwhite.png";
 import bagAllureBlack from "@/assets/bag-allure-preta.png";
 import bagAllureWine from "@/assets/bag-allure-vinho.png";
 import bagNuitCaramelo from "@/assets/bag-nuit-caramelo.png";
 import bagNuitMarrom from "@/assets/bag-nuit-marrom.png";
-import bagNuitMarsala from "@/assets/bag-nuit-marsala.png";
+import bagNuitVinho from "@/assets/bag-nuit-vinho.png";
 import bagNuitOffwhite from "@/assets/bag-nuit-offwhite.png";
 import bagNuitBlack from "@/assets/bag-nuit-preta.png";
 import bagNuitOlive from "@/assets/bag-nuit-verdeoliva.png";
@@ -81,22 +78,16 @@ export const venusColors: ColorOption[] = [
 ];
 
 export const allureColors: ColorOption[] = [
+  { name: "Vinho", value: "vinho", hex: "#6C2230" },
   { name: "Caramelo", value: "caramelo", hex: "#A67B3D" },
   { name: "Off-white", value: "offwhite", hex: "#E8DECF" },
   { name: "Preta", value: "preta", hex: "#1A1A1A" },
-  { name: "Vinho", value: "vinho", hex: "#6C2230" },
-];
-
-export const westColors: ColorOption[] = [
-  { name: "Preta", value: "preta", hex: "#1A1A1A" },
-  { name: "Vermelha", value: "vermelha", hex: "#8B1A1A" },
-  { name: "Caramelo", value: "caramelo", hex: "#A67B3D" },
 ];
 
 export const nuitColors: ColorOption[] = [
   { name: "Caramelo", value: "caramelo", hex: "#A67B3D" },
-  { name: "Marrom", value: "marrom", hex: "#5C4033" },
-  { name: "Marsala", value: "marsala", hex: "#7A2E3A" },
+  { name: "Marrom", value: "marrom", hex: "#4B2828" },
+  { name: "Vinho", value: "vinho", hex: "#6f201c" },
   { name: "Off-white", value: "offwhite", hex: "#E8DECF" },
   { name: "Preta", value: "preta", hex: "#1A1A1A" },
   { name: "Verde Oliva", value: "verdeoliva", hex: "#556B2F" },
@@ -114,7 +105,8 @@ export const handles: TextOption[] = [
 ];
 
 export const nuitHandles: TextOption[] = [
-  { name: "Crochê + Corrente", value: "croche-corrente" },
+  { name: "Com alça transversal", value: "com-alca" },
+  { name: "Sem alça transversal", value: "sem-alca" },
 ];
 
 export const livHandles: TextOption[] = [
@@ -128,11 +120,6 @@ export const livHandles: TextOption[] = [
  * Adicione novos produtos/cores aqui.
  */
 export const imageVariants: Record<string, Record<string, string>> = {
-  "bag-west-fe": {
-    preta: bagWestBlack,
-    vermelha: bagWestRed,
-    caramelo: bagWestCamel,
-  },
   "bag-venus-fe": {
     cafe: bagVenusCafe,
     caramelo: bagVenusCamel,
@@ -148,7 +135,7 @@ export const imageVariants: Record<string, Record<string, string>> = {
   "bag-nuit-hc": {
     caramelo: bagNuitCaramelo,
     marrom: bagNuitMarrom,
-    marsala: bagNuitMarsala,
+    vinho: bagNuitVinho,
     offwhite: bagNuitOffwhite,
     preta: bagNuitBlack,
     verdeoliva: bagNuitOlive,
@@ -162,7 +149,6 @@ export const imageVariants: Record<string, Record<string, string>> = {
 };
 
 export const productColorOptions: Record<string, ColorOption[]> = {
-  "bag-west-fe": westColors,
   "bag-venus-fe": venusColors,
   "bag-allure-fe": allureColors,
   "bag-nuit-hc": nuitColors,
