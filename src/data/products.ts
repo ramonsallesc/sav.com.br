@@ -34,6 +34,11 @@ const livColorPrices: Record<string, number> = {
   offwhite: 219.9,
 };
 
+const nuitHandlePrices: Record<string, number> = {
+  "com-alca": 199.9,
+  "sem-alca": 189.9,
+};
+
 // ⚠️ ALTERE OS PRODUTOS AQUI — ou substitua por fetch do banco de dados
 export const products: Product[] = [
   {
@@ -80,10 +85,19 @@ export function getProductsByStyle(style: Style): Product[] {
   return products.filter((p) => p.style === style);
 }
 
-/** Resolve preço final por produto+cor */
-export function getProductPrice(productId: string, colorValue: string, fallbackPrice: number): number {
+/** Resolve preço final por produto+cor+alça */
+export function getProductPrice(
+  productId: string,
+  colorValue: string,
+  fallbackPrice: number,
+  handleValue?: string,
+): number {
   if (productId === "bag-liv-hc") {
     return livColorPrices[colorValue] ?? fallbackPrice;
+  }
+
+  if (productId === "bag-nuit-hc") {
+    return nuitHandlePrices[handleValue ?? ""] ?? fallbackPrice;
   }
 
   return fallbackPrice;

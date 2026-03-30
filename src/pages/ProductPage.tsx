@@ -46,8 +46,8 @@ const ProductPage = () => {
 
   const currentPrice = useMemo(() => {
     if (!product) return 0;
-    return getProductPrice(product.id, selectedColor, product.price);
-  }, [product, selectedColor]);
+    return getProductPrice(product.id, selectedColor, product.price, selectedHandle);
+  }, [product, selectedColor, selectedHandle]);
 
   // Set product in store on mount
   useEffect(() => {
