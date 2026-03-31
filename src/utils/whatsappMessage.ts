@@ -37,7 +37,7 @@ Cor: ${data.color}
 ${handleLine}
 
 Observações: ${data.notes || "Nenhuma"}
-${data.customerWhatsApp}
+${data.customerWhatsApp}`;
 }
 
 /** Abre o WhatsApp com a mensagem formatada */

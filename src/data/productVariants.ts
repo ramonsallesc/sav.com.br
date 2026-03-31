@@ -71,8 +71,8 @@ export const colors: ColorOption[] = [
 ];
 
 export const venusColors: ColorOption[] = [
-  { name: "Cafe", value: "cafe", hex: "#6B4A3A" },
-  { name: "Caramelo", value: "caramelo", hex: "#A67B3D" },
+  { name: "Cafe", value: "cafe", hex: "#3B2A2E" },
+  { name: "Caramelo", value: "caramelo", hex: "#5c311d" },
   { name: "Off-white", value: "offwhite", hex: "#E8DECF" },
   { name: "Preta", value: "preta", hex: "#1A1A1A" },
 ];
