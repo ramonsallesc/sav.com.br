@@ -36,7 +36,8 @@ Modelo: ${data.productName}
 Cor: ${data.color}
 ${handleLine}
 
-Observações: ${data.notes || "Nenhuma"}`;
+Observações: ${data.notes || "Nenhuma"}
+${data.customerWhatsApp}
 }
 
 /** Abre o WhatsApp com a mensagem formatada */
